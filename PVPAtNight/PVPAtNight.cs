@@ -48,31 +48,43 @@ namespace Oxide.Plugins
 
         private void OnEntityDeath(BaseCombatEntity victimEntity, HitInfo hitInfo)
         {
-            if (!(victimEntity is BasePlayer))
-                return;
-
-            if (victimEntity.lastDamage == DamageType.Bleeding)
-                return;
-
-            if (canPvp == true)
+            if (victimEntity is BasePlayer)
             {
-                BaseEntity attacker = victimEntity.lastAttacker;
-                if (attacker == null) return;
-
-                if (attacker == victimEntity.ToPlayer()) return;
-
-                if (GetCombatEntityType(attacker) == CombatEntityType.Scientist || GetCombatEntityType(attacker) == CombatEntityType.TunnelDweller) return;
-
-                if (attacker is BasePlayer)
+                if (victimEntity is NPCPlayer)
                 {
-                    if (victimEntity.ToPlayer().Team != null && victimEntity.ToPlayer().Team.members.Contains(attacker.ToPlayer().userID))
+                    //
+                }
+                else
+                {
+                    if (victimEntity.lastDamage == DamageType.Bleeding)
                         return;
 
-                    var item = itemList.ElementAt(UnityEngine.Random.Range(0, itemList.Count));
-                    (attacker as BasePlayer).inventory.GiveItem(ItemManager.CreateByItemID(ItemManager.FindItemDefinition(item.Key).itemid, item.Value));
-                    Server.Broadcast($"{attacker.ToPlayer().displayName} has received {item.Value}x {ItemManager.FindItemDefinition(item.Key).displayName.english} for killing {victimEntity.ToPlayer().displayName}");
+                    if (canPvp == true)
+                    {
+                        BaseEntity attacker = victimEntity.lastAttacker;
+                        if (attacker == null) return;
+
+                        if (attacker == victimEntity.ToPlayer()) return;
+
+
+                        if (attacker is BasePlayer)
+                        {
+                            if (victimEntity.ToPlayer().Team != null && victimEntity.ToPlayer().Team.members.Contains(attacker.ToPlayer().userID))
+                                return;
+
+                            var item = itemList.ElementAt(UnityEngine.Random.Range(0, itemList.Count));
+                            (attacker as BasePlayer).inventory.GiveItem(ItemManager.CreateByItemID(ItemManager.FindItemDefinition(item.Key).itemid, item.Value));
+                            Server.Broadcast($"{attacker.ToPlayer().displayName} has received {item.Value}x {ItemManager.FindItemDefinition(item.Key).displayName.english} for killing {victimEntity.ToPlayer().displayName}");
+                        }
+                    }
                 }
             }
+            else
+            {
+                //
+            }
+
+
         }
 
         [ChatCommand("test")]
@@ -80,55 +92,6 @@ namespace Oxide.Plugins
         {
         }
 
-        internal enum CombatEntityType
-        {
-            Helicopter = 0,
-            Bradley = 1,
-            Animal = 2,
-            Murderer = 3,
-            Scientist = 4,
-            Scarecrow = 16,
-            TunnelDweller = 17,
-            UnderwaterDweller = 18,
-            Player = 5,
-            Trap = 6,
-            Turret = 7,
-            Barricade = 8,
-            ExternalWall = 9,
-            HeatSource = 10,
-            Fire = 11,
-            Lock = 12,
-            Sentry = 13,
-            Other = 14,
-            None = 15
-        }
-
-        private CombatEntityType GetCombatEntityType(BaseEntity entity)
-        {
-            if (entity == null)
-                return CombatEntityType.None;
-
-
-            if (entity is BaseOven)
-                return CombatEntityType.HeatSource;
-
-            if (entity is SimpleBuildingBlock)
-                return CombatEntityType.ExternalWall;
-
-            if (entity is BaseAnimalNPC)
-                return CombatEntityType.Animal;
-
-            if (entity is BaseTrap)
-                return CombatEntityType.Trap;
-
-            if (entity is Barricade)
-                return CombatEntityType.Barricade;
-
-            if (entity is IOEntity)
-                return CombatEntityType.Trap;
-
-            return CombatEntityType.Other;
-        }
 
         void OnTimeSunset()
         {

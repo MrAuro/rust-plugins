@@ -1,411 +1,408 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>AuroPlugins</AssemblyName>
-    <RootNamespace>AuroPlugins</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<AssemblyName>AuroPlugins</AssemblyName>
+		<RootNamespace>AuroPlugins</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\..\..\RustPluginDlls\0Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="Accessibility">
-      <HintPath>..\..\..\..\RustPluginDlls\Accessibility.dll</HintPath>
-    </Reference>
-    <Reference Include="ApexAI">
-      <HintPath>..\..\..\..\RustPluginDlls\ApexAI.dll</HintPath>
-    </Reference>
-    <Reference Include="ApexSerialization">
-      <HintPath>..\..\..\..\RustPluginDlls\ApexSerialization.dll</HintPath>
-    </Reference>
-    <Reference Include="ApexShared">
-      <HintPath>..\..\..\..\RustPluginDlls\ApexShared.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\RustPluginDlls\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\..\RustPluginDlls\Assembly-CSharp-firstpass.dll</HintPath>
-    </Reference>
-    <Reference Include="CurvedTextMeshPro">
-      <HintPath>..\..\..\..\RustPluginDlls\CurvedTextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="DelaunayER">
-      <HintPath>..\..\..\..\RustPluginDlls\DelaunayER.dll</HintPath>
-    </Reference>
-    <Reference Include="DryWetMidi">
-      <HintPath>..\..\..\..\RustPluginDlls\DryWetMidi.dll</HintPath>
-    </Reference>
-    <Reference Include="EasyAntiCheat.Client">
-      <HintPath>..\..\..\..\RustPluginDlls\EasyAntiCheat.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="EasyAntiCheat.Server">
-      <HintPath>..\..\..\..\RustPluginDlls\EasyAntiCheat.Server.dll</HintPath>
-    </Reference>
-    <Reference Include="EasyRoads3Dv3">
-      <HintPath>..\..\..\..\RustPluginDlls\EasyRoads3Dv3.dll</HintPath>
-    </Reference>
-    <Reference Include="EZhex1991.EZSoftBone">
-      <HintPath>..\..\..\..\RustPluginDlls\EZhex1991.EZSoftBone.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.BurstCloth">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.BurstCloth.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.Console">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.Console.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.GoogleSheets">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.GoogleSheets.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.Input">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.Input.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.Network">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.Network.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.Raknet">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.Raknet.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.Rcon">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.Rcon.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.Skeleton">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.Skeleton.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.Sqlite">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.Sqlite.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.SteamNetworking">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.SteamNetworking.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.Steamworks.Posix">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.Steamworks.Posix.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.System">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.System.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.Unity">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Facepunch.UnityEngine">
-      <HintPath>..\..\..\..\RustPluginDlls\Facepunch.UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="Fleck">
-      <HintPath>..\..\..\..\RustPluginDlls\Fleck.dll</HintPath>
-    </Reference>
-    <Reference Include="GA">
-      <HintPath>..\..\..\..\RustPluginDlls\GA.dll</HintPath>
-    </Reference>
-    <Reference Include="I18N">
-      <HintPath>..\..\..\..\RustPluginDlls\I18N.dll</HintPath>
-    </Reference>
-    <Reference Include="I18N.CJK">
-      <HintPath>..\..\..\..\RustPluginDlls\I18N.CJK.dll</HintPath>
-    </Reference>
-    <Reference Include="I18N.MidEast">
-      <HintPath>..\..\..\..\RustPluginDlls\I18N.MidEast.dll</HintPath>
-    </Reference>
-    <Reference Include="I18N.Other">
-      <HintPath>..\..\..\..\RustPluginDlls\I18N.Other.dll</HintPath>
-    </Reference>
-    <Reference Include="I18N.Rare">
-      <HintPath>..\..\..\..\RustPluginDlls\I18N.Rare.dll</HintPath>
-    </Reference>
-    <Reference Include="I18N.West">
-      <HintPath>..\..\..\..\RustPluginDlls\I18N.West.dll</HintPath>
-    </Reference>
-    <Reference Include="Ionic.Zip.Reduced">
-      <HintPath>..\..\..\..\RustPluginDlls\Ionic.Zip.Reduced.dll</HintPath>
-    </Reference>
-    <Reference Include="LZ4">
-      <HintPath>..\..\..\..\RustPluginDlls\LZ4.dll</HintPath>
-    </Reference>
-    <Reference Include="LZ4pn">
-      <HintPath>..\..\..\..\RustPluginDlls\LZ4pn.dll</HintPath>
-    </Reference>
-    <Reference Include="MidiJack">
-      <HintPath>..\..\..\..\RustPluginDlls\MidiJack.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Data.Sqlite">
-      <HintPath>..\..\..\..\RustPluginDlls\Mono.Data.Sqlite.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Data.Tds">
-      <HintPath>..\..\..\..\RustPluginDlls\Mono.Data.Tds.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Posix">
-      <HintPath>..\..\..\..\RustPluginDlls\Mono.Posix.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Security">
-      <HintPath>..\..\..\..\RustPluginDlls\Mono.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.WebBrowser">
-      <HintPath>..\..\..\..\RustPluginDlls\Mono.WebBrowser.dll</HintPath>
-    </Reference>
-    <Reference Include="MP3Sharp">
-      <HintPath>..\..\..\..\RustPluginDlls\MP3Sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Data">
-      <HintPath>..\..\..\..\RustPluginDlls\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="NewAssembly">
-      <HintPath>..\..\..\..\RustPluginDlls\NewAssembly.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\RustPluginDlls\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Novell.Directory.Ldap">
-      <HintPath>..\..\..\..\RustPluginDlls\Novell.Directory.Ldap.dll</HintPath>
-    </Reference>
-    <Reference Include="Oxide.Core">
-      <HintPath>..\..\..\..\RustPluginDlls\Oxide.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Oxide.CSharp">
-      <HintPath>..\..\..\..\RustPluginDlls\Oxide.CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Oxide.MySql">
-      <HintPath>..\..\..\..\RustPluginDlls\Oxide.MySql.dll</HintPath>
-    </Reference>
-    <Reference Include="Oxide.References">
-      <HintPath>..\..\..\..\RustPluginDlls\Oxide.References.dll</HintPath>
-    </Reference>
-    <Reference Include="Oxide.Rust">
-      <HintPath>..\..\..\..\RustPluginDlls\Oxide.Rust.dll</HintPath>
-    </Reference>
-    <Reference Include="Oxide.SQLite">
-      <HintPath>..\..\..\..\RustPluginDlls\Oxide.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="Oxide.Unity">
-      <HintPath>..\..\..\..\RustPluginDlls\Oxide.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.Data">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.Demo">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.Demo.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.Global">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.Global.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.Harmony">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.Harmony.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.Localization">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.Localization.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.Platform">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.Platform.Common">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.Platform.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.Platform.Steam">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.Platform.Steam.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.UI">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.Workshop">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.Workshop.dll</HintPath>
-    </Reference>
-    <Reference Include="Rust.World">
-      <HintPath>..\..\..\..\RustPluginDlls\Rust.World.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Buffers">
-      <HintPath>..\..\..\..\RustPluginDlls\System.Buffers.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>..\..\..\..\RustPluginDlls\Unity.Burst.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Burst.Unsafe">
-      <HintPath>..\..\..\..\RustPluginDlls\Unity.Burst.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>..\..\..\..\RustPluginDlls\Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>..\..\..\..\RustPluginDlls\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AccessibilityModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AccessibilityModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AIModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AndroidJNIModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AndroidJNIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AnimationModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AnimationModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AssetBundleModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.AudioModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AudioModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ClothModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ClothModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ClusterInputModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ClusterInputModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ClusterRendererModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ClusterRendererModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CrashReportingModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.CrashReportingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.DirectorModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.DirectorModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.DSPGraphModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.DSPGraphModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GameCenterModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.GameCenterModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GridModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.GridModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.HotReloadModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.HotReloadModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ImageConversionModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.InputLegacyModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.InputModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.InputModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.JSONSerializeModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.LocalizationModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.LocalizationModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ParticleSystemModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PerformanceReportingModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.PerformanceReportingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.Physics2DModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.PhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ProfilerModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ProfilerModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.ScreenCaptureModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ScreenCaptureModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SharedInternalsModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.SharedInternalsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SpriteMaskModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.SpriteMaskModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SpriteShapeModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.SpriteShapeModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.StreamingModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.StreamingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SubstanceModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.SubstanceModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SubsystemsModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.SubsystemsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TerrainModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TerrainPhysicsModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TerrainPhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TextCoreModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TextCoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TextRenderingModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TilemapModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TilemapModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TLSModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TLSModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIElementsModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UIElementsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UIModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UmbraModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UmbraModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UNETModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UNETModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityAnalyticsModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityAnalyticsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityConnectModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityConnectModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityTestProtocolModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityTestProtocolModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityWebRequestModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VehiclesModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.VehiclesModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VFXModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.VFXModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VideoModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.VideoModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.VRModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.VRModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.WindModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.WindModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.XRModule">
-      <HintPath>..\..\..\..\RustPluginDlls\UnityEngine.XRModule.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="0Harmony">
+			<HintPath>..\..\..\..\RustPluginDlls\0Harmony.dll</HintPath>
+		</Reference>
+		<Reference Include="Accessibility">
+			<HintPath>..\..\..\..\RustPluginDlls\Accessibility.dll</HintPath>
+		</Reference>
+		<Reference Include="ApexAI">
+			<HintPath>..\..\..\..\RustPluginDlls\ApexAI.dll</HintPath>
+		</Reference>
+		<Reference Include="ApexSerialization">
+			<HintPath>..\..\..\..\RustPluginDlls\ApexSerialization.dll</HintPath>
+		</Reference>
+		<Reference Include="ApexShared">
+			<HintPath>..\..\..\..\RustPluginDlls\ApexShared.dll</HintPath>
+		</Reference>
+		<Reference Include="Assembly-CSharp">
+			<HintPath>..\..\..\..\RustPluginDlls\Assembly-CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="Assembly-CSharp-firstpass">
+			<HintPath>..\..\..\..\RustPluginDlls\Assembly-CSharp-firstpass.dll</HintPath>
+		</Reference>
+		<Reference Include="CurvedTextMeshPro">
+			<HintPath>..\..\..\..\RustPluginDlls\CurvedTextMeshPro.dll</HintPath>
+		</Reference>
+		<Reference Include="DelaunayER">
+			<HintPath>..\..\..\..\RustPluginDlls\DelaunayER.dll</HintPath>
+		</Reference>
+		<Reference Include="DryWetMidi">
+			<HintPath>..\..\..\..\RustPluginDlls\DryWetMidi.dll</HintPath>
+		</Reference>
+		<Reference Include="EasyAntiCheat.Client">
+			<HintPath>..\..\..\..\RustPluginDlls\EasyAntiCheat.Client.dll</HintPath>
+		</Reference>
+		<Reference Include="EasyAntiCheat.Server">
+			<HintPath>..\..\..\..\RustPluginDlls\EasyAntiCheat.Server.dll</HintPath>
+		</Reference>
+		<Reference Include="EasyRoads3Dv3">
+			<HintPath>..\..\..\..\RustPluginDlls\EasyRoads3Dv3.dll</HintPath>
+		</Reference>
+		<Reference Include="EZhex1991.EZSoftBone">
+			<HintPath>..\..\..\..\RustPluginDlls\EZhex1991.EZSoftBone.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.BurstCloth">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.BurstCloth.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.Console">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.Console.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.GoogleSheets">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.GoogleSheets.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.Input">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.Input.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.Network">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.Network.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.Raknet">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.Raknet.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.Rcon">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.Rcon.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.Skeleton">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.Skeleton.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.Sqlite">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.Sqlite.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.SteamNetworking">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.SteamNetworking.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.Steamworks.Posix">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.Steamworks.Posix.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.System">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.System.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.Unity">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.Unity.dll</HintPath>
+		</Reference>
+		<Reference Include="Facepunch.UnityEngine">
+			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="Fleck">
+			<HintPath>..\..\..\..\RustPluginDlls\Fleck.dll</HintPath>
+		</Reference>
+		<Reference Include="GA">
+			<HintPath>..\..\..\..\RustPluginDlls\GA.dll</HintPath>
+		</Reference>
+		<Reference Include="I18N">
+			<HintPath>..\..\..\..\RustPluginDlls\I18N.dll</HintPath>
+		</Reference>
+		<Reference Include="I18N.CJK">
+			<HintPath>..\..\..\..\RustPluginDlls\I18N.CJK.dll</HintPath>
+		</Reference>
+		<Reference Include="I18N.MidEast">
+			<HintPath>..\..\..\..\RustPluginDlls\I18N.MidEast.dll</HintPath>
+		</Reference>
+		<Reference Include="I18N.Other">
+			<HintPath>..\..\..\..\RustPluginDlls\I18N.Other.dll</HintPath>
+		</Reference>
+		<Reference Include="I18N.Rare">
+			<HintPath>..\..\..\..\RustPluginDlls\I18N.Rare.dll</HintPath>
+		</Reference>
+		<Reference Include="I18N.West">
+			<HintPath>..\..\..\..\RustPluginDlls\I18N.West.dll</HintPath>
+		</Reference>
+		<Reference Include="Ionic.Zip.Reduced">
+			<HintPath>..\..\..\..\RustPluginDlls\Ionic.Zip.Reduced.dll</HintPath>
+		</Reference>
+		<Reference Include="LZ4">
+			<HintPath>..\..\..\..\RustPluginDlls\LZ4.dll</HintPath>
+		</Reference>
+		<Reference Include="LZ4pn">
+			<HintPath>..\..\..\..\RustPluginDlls\LZ4pn.dll</HintPath>
+		</Reference>
+		<Reference Include="MidiJack">
+			<HintPath>..\..\..\..\RustPluginDlls\MidiJack.dll</HintPath>
+		</Reference>
+		<Reference Include="Mono.Data.Sqlite">
+			<HintPath>..\..\..\..\RustPluginDlls\Mono.Data.Sqlite.dll</HintPath>
+		</Reference>
+		<Reference Include="Mono.Data.Tds">
+			<HintPath>..\..\..\..\RustPluginDlls\Mono.Data.Tds.dll</HintPath>
+		</Reference>
+		<Reference Include="Mono.Posix">
+			<HintPath>..\..\..\..\RustPluginDlls\Mono.Posix.dll</HintPath>
+		</Reference>
+		<Reference Include="Mono.Security">
+			<HintPath>..\..\..\..\RustPluginDlls\Mono.Security.dll</HintPath>
+		</Reference>
+		<Reference Include="Mono.WebBrowser">
+			<HintPath>..\..\..\..\RustPluginDlls\Mono.WebBrowser.dll</HintPath>
+		</Reference>
+		<Reference Include="MP3Sharp">
+			<HintPath>..\..\..\..\RustPluginDlls\MP3Sharp.dll</HintPath>
+		</Reference>
+		<Reference Include="MySql.Data">
+			<HintPath>..\..\..\..\RustPluginDlls\MySql.Data.dll</HintPath>
+		</Reference>
+		<Reference Include="NewAssembly">
+			<HintPath>..\..\..\..\RustPluginDlls\NewAssembly.dll</HintPath>
+		</Reference>
+		<Reference Include="Novell.Directory.Ldap">
+			<HintPath>..\..\..\..\RustPluginDlls\Novell.Directory.Ldap.dll</HintPath>
+		</Reference>
+		<Reference Include="Oxide.Core">
+			<HintPath>..\..\..\..\RustPluginDlls\Oxide.Core.dll</HintPath>
+		</Reference>
+		<Reference Include="Oxide.CSharp">
+			<HintPath>..\..\..\..\RustPluginDlls\Oxide.CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="Oxide.MySql">
+			<HintPath>..\..\..\..\RustPluginDlls\Oxide.MySql.dll</HintPath>
+		</Reference>
+		<Reference Include="Oxide.References">
+			<HintPath>..\..\..\..\RustPluginDlls\Oxide.References.dll</HintPath>
+		</Reference>
+		<Reference Include="Oxide.Rust">
+			<HintPath>..\..\..\..\RustPluginDlls\Oxide.Rust.dll</HintPath>
+		</Reference>
+		<Reference Include="Oxide.SQLite">
+			<HintPath>..\..\..\..\RustPluginDlls\Oxide.SQLite.dll</HintPath>
+		</Reference>
+		<Reference Include="Oxide.Unity">
+			<HintPath>..\..\..\..\RustPluginDlls\Oxide.Unity.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.Data">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.Data.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.Demo">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.Demo.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.Global">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.Global.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.Harmony">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.Harmony.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.Localization">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.Localization.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.Platform">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.Platform.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.Platform.Common">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.Platform.Common.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.Platform.Steam">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.Platform.Steam.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.UI">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.Workshop">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.Workshop.dll</HintPath>
+		</Reference>
+		<Reference Include="Rust.World">
+			<HintPath>..\..\..\..\RustPluginDlls\Rust.World.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Buffers">
+			<HintPath>..\..\..\..\RustPluginDlls\System.Buffers.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Burst">
+			<HintPath>..\..\..\..\RustPluginDlls\Unity.Burst.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Burst.Unsafe">
+			<HintPath>..\..\..\..\RustPluginDlls\Unity.Burst.Unsafe.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.Mathematics">
+			<HintPath>..\..\..\..\RustPluginDlls\Unity.Mathematics.dll</HintPath>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<HintPath>..\..\..\..\RustPluginDlls\Unity.TextMeshPro.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AccessibilityModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AccessibilityModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AIModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AndroidJNIModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AndroidJNIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AnimationModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AnimationModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AssetBundleModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AssetBundleModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.AudioModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AudioModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ClothModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ClothModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ClusterInputModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ClusterInputModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ClusterRendererModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ClusterRendererModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.CoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.CrashReportingModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.CrashReportingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.DirectorModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.DirectorModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.DSPGraphModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.DSPGraphModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.GameCenterModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.GameCenterModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.GridModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.GridModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.HotReloadModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.HotReloadModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ImageConversionModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ImageConversionModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.IMGUIModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.IMGUIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputLegacyModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.InputLegacyModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.InputModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.InputModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.JSONSerializeModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.JSONSerializeModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.LocalizationModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.LocalizationModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ParticleSystemModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ParticleSystemModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PerformanceReportingModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.PerformanceReportingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.Physics2DModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.Physics2DModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.PhysicsModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.PhysicsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ProfilerModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ProfilerModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ScreenCaptureModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.ScreenCaptureModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SharedInternalsModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.SharedInternalsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SpriteMaskModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.SpriteMaskModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SpriteShapeModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.SpriteShapeModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.StreamingModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.StreamingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SubstanceModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.SubstanceModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.SubsystemsModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.SubsystemsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TerrainModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TerrainModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TerrainPhysicsModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextCoreModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TextCoreModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TextRenderingModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TextRenderingModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TilemapModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TilemapModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.TLSModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.TLSModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UI.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIElementsModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UIElementsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UIModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UIModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UmbraModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UmbraModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UNETModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UNETModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityAnalyticsModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityConnectModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityConnectModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityTestProtocolModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestAudioModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityWebRequestModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestTextureModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.UnityWebRequestWWWModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VehiclesModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.VehiclesModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VFXModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.VFXModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VideoModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.VideoModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.VRModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.VRModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.WindModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.WindModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.XRModule">
+			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.XRModule.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
 </Project>

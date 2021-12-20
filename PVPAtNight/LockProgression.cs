@@ -16,7 +16,7 @@ namespace Oxide.Plugins
         private const string usePerm = "lockprogression.use";
         bool lockProgression = false;
 
-        float time = 60f;
+        float time = 3600f;
         DateTime startTime;
 
         void Init()

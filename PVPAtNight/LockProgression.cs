@@ -15,6 +15,7 @@ namespace Oxide.Plugins
         Plugin MonumentFinder;
         private const string usePerm = "lockprogression.use";
         bool lockProgression = false;
+        bool lockAttackHeli = false;
 
         float time = 3600f;
         DateTime startTime;
@@ -38,10 +39,39 @@ namespace Oxide.Plugins
             timer.Once(time, () => { lockProgression = false; Server.Broadcast("The Oilrigs crates are now hackable!"); });
         }
 
+        [ChatCommand("lockheli")]
+        void LockHeli(BasePlayer player, string command, string[] args)
+        {
+            if (!permission.UserHasPermission(player.UserIDString, usePerm))
+            {
+                SendReply(player, "You don't have permission to use this command");
+                return;
+            }
+
+            lockAttackHeli = true;
+        }
+
+        [ChatCommand("unlockheli")]
+        void UnlockHeli(BasePlayer player, string command, string[] args)
+        {
+            if (!permission.UserHasPermission(player.UserIDString, usePerm))
+            {
+                SendReply(player, "You don't have permission to use this command");
+                return;
+            }
+
+            lockAttackHeli = false;
+        }
 
         void OnEntitySpawned(BaseNetworkable entity)
         {
             if (entity.ShortPrefabName.Contains("cargoship") && lockProgression)
+            {
+                Puts(entity.ShortPrefabName);
+                entity.Kill();
+            }
+
+            if (entity.ShortPrefabName == "patrolhelicopter" && lockAttackHeli)
             {
                 Puts(entity.ShortPrefabName);
                 entity.Kill();

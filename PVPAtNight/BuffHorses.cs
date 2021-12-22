@@ -46,11 +46,14 @@ namespace Oxide.Plugins
             Puts(ridableHorse.staminaReplenishRatioStanding.ToString());
             Puts(ridableHorse.staminaSeconds.ToString());
 
-            ridableHorse.staminaSeconds = 1000;
-            ridableHorse.maxStaminaSeconds = 1000;
+            ridableHorse.staminaSeconds = 9999999999;
+            ridableHorse.maxStaminaSeconds = 9999999999;
             ridableHorse.staminaReplenishRatioMoving = 2f;
             ridableHorse.staminaReplenishRatioStanding = 2f;
             ridableHorse.staminaCoreLossRatio = 0.01f;
+
+            ridableHorse.ReplenishStamina(1000000);
+            ridableHorse.ReplenishStaminaCore(1000000, 1000000);
 
             ridableHorse.SendNetworkUpdate();
         }

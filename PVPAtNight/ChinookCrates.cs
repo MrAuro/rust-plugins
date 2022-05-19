@@ -16,6 +16,8 @@ namespace Oxide.Plugins
         {
             Server.Broadcast("OnCrateDropped has been fired!");
 
+            // if ()
+
             // if (BasePlayer.allPlayerList.Count() <= 4) return;
             // Server.Broadcast("The Chinook Crate will unlock in 5 minutes!");
             // crate.StartHacking();

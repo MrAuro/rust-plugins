@@ -111,6 +111,28 @@ namespace Oxide.Plugins
 
         void OnTimeSunrise()
         {
+            var random = UnityEngine.Random.Range(0, 100);
+            if (random < 10)
+            {
+                var timeUntilPurge = UnityEngine.Random.Range(5, 20);
+
+                timer.Once(timeUntilPurge * 60, () =>
+                {
+                    foreach (BasePlayer player in BasePlayer.activePlayerList)
+                    {
+                        CuiHelper.AddUi(player, cachedPVPUI);
+                        Server.Command("gather.rate dispenser Stones 3");
+                        Server.Command("gather.rate dispenser Wood 3");
+                        Server.Command("gather.rate dispenser \"Sulfur Ore\" 3");
+                        Server.Command("gather.rate dispenser \"Metal Ore\" 3");
+                    }
+
+                    Server.Broadcast("The Purge is now on and rewards are given out for PVPing");
+                    canPvp = true;
+                    Puts("PVP is enabled");
+                });
+            }
+
             foreach (BasePlayer player in BasePlayer.activePlayerList)
             {
                 CuiHelper.DestroyUi(player, "PVPUI");

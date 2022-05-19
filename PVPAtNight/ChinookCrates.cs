@@ -12,23 +12,25 @@ namespace Oxide.Plugins
     [Description("Makes Chinook Crates automatically start to hack")]
     public class ChinookCrates : RustPlugin
     {
-        void OnCrateLanded(HackableLockedCrate crate)
+        void OnCrateDropped(HackableLockedCrate crate)
         {
-            if (BasePlayer.allPlayerList.Count() <= 4) return;
-            Server.Broadcast("The Chinook Crate will unlock in 5 minutes!");
-            crate.StartHacking();
-            crate.hackSeconds = 300;
+            Server.Broadcast("OnCrateDropped has been fired!");
 
-            timer.Once(240f, () =>
-            {
-                Server.Broadcast("The Chinook Crate will unlock in 60 seconds!");
-                crate.hackSeconds = 60;
+            // if (BasePlayer.allPlayerList.Count() <= 4) return;
+            // Server.Broadcast("The Chinook Crate will unlock in 5 minutes!");
+            // crate.StartHacking();
+            // crate.hackSeconds = 300;
 
-                timer.Once(59f, () =>
-                {
-                    Server.Broadcast("The Chinook Crate has been unlocked!");
-                });
-            });
+            // timer.Once(240f, () =>
+            // {
+            //     Server.Broadcast("The Chinook Crate will unlock in 60 seconds!");
+            //     crate.hackSeconds = 60;
+
+            //     timer.Once(59f, () =>
+            //     {
+            //         Server.Broadcast("The Chinook Crate has been unlocked!");
+            //     });
+            // });
         }
     }
 }

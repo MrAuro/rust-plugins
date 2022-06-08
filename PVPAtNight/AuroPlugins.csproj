@@ -82,6 +82,9 @@
 		<Reference Include="Facepunch.Steamworks.Posix">
 			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.Steamworks.Posix.dll</HintPath>
 		</Reference>
+		<Reference Include="Facepunch.Steamworks.Win64">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\Facepunch.Steamworks.Win64.dll</HintPath>
+		</Reference>
 		<Reference Include="Facepunch.System">
 			<HintPath>..\..\..\..\RustPluginDlls\Facepunch.System.dll</HintPath>
 		</Reference>
@@ -124,6 +127,9 @@
 		<Reference Include="LZ4pn">
 			<HintPath>..\..\..\..\RustPluginDlls\LZ4pn.dll</HintPath>
 		</Reference>
+		<Reference Include="Melanchall.DryWetMidi">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\Melanchall.DryWetMidi.dll</HintPath>
+		</Reference>
 		<Reference Include="MidiJack">
 			<HintPath>..\..\..\..\RustPluginDlls\MidiJack.dll</HintPath>
 		</Reference>
@@ -150,6 +156,9 @@
 		</Reference>
 		<Reference Include="NewAssembly">
 			<HintPath>..\..\..\..\RustPluginDlls\NewAssembly.dll</HintPath>
+		</Reference>
+		<Reference Include="Newtonsoft.Json">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\Newtonsoft.Json.dll</HintPath>
 		</Reference>
 		<Reference Include="Novell.Directory.Ldap">
 			<HintPath>..\..\..\..\RustPluginDlls\Novell.Directory.Ldap.dll</HintPath>
@@ -211,6 +220,69 @@
 		<Reference Include="System.Buffers">
 			<HintPath>..\..\..\..\RustPluginDlls\System.Buffers.dll</HintPath>
 		</Reference>
+		<Reference Include="System.ComponentModel.DataAnnotations">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.ComponentModel.DataAnnotations.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Configuration">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Configuration.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Configuration.Install">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Configuration.Install.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Data.SQLite">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Data.SQLite.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Design">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Design.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Diagnostics.StackTrace">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Diagnostics.StackTrace.dll</HintPath>
+		</Reference>
+		<Reference Include="System.DirectoryServices">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.DirectoryServices.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Drawing.Design">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Drawing.Design.dll</HintPath>
+		</Reference>
+		<Reference Include="System.EnterpriseServices">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.EnterpriseServices.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Globalization.Extensions">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Globalization.Extensions.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Memory">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Memory.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Numerics.Vectors">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Numerics.Vectors.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Runtime.CompilerServices.Unsafe">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Runtime.Serialization.Formatters.Soap">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Runtime.Serialization.Formatters.Soap.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Security">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Security.dll</HintPath>
+		</Reference>
+		<Reference Include="System.ServiceModel.Internals">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.ServiceModel.Internals.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Threading.Tasks.Extensions">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Threading.Tasks.Extensions.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Web.ApplicationServices">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Web.ApplicationServices.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Web.Services">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Web.Services.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Windows.Forms">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Windows.Forms.dll</HintPath>
+		</Reference>
+		<Reference Include="System.Xml.XPath.XDocument">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\System.Xml.XPath.XDocument.dll</HintPath>
+		</Reference>
 		<Reference Include="Unity.Burst">
 			<HintPath>..\..\..\..\RustPluginDlls\Unity.Burst.dll</HintPath>
 		</Reference>
@@ -237,6 +309,9 @@
 		</Reference>
 		<Reference Include="UnityEngine.AnimationModule">
 			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AnimationModule.dll</HintPath>
+		</Reference>
+		<Reference Include="UnityEngine.ARModule">
+		  <HintPath>..\..\..\..\Downloads\RustDedicated_Data\Managed\UnityEngine.ARModule.dll</HintPath>
 		</Reference>
 		<Reference Include="UnityEngine.AssetBundleModule">
 			<HintPath>..\..\..\..\RustPluginDlls\UnityEngine.AssetBundleModule.dll</HintPath>

@@ -9,13 +9,15 @@ using Oxide.Core.Plugins;
 using Oxide.Game.Rust.Cui;
 using System.Linq;
 
-
 namespace Oxide.Plugins
 {
     [Info("Leaderboard", "Auro", "1.0.0")]
     [Description("Connects with rust.mrauro.dev")]
     public class Leaderboard : CovalencePlugin
     {
+        // protected string URL = "https://rust.mrauro.dev";
+        protected string URL = "https://6a62-73-121-97-91.ngrok.io";
+
         enum LeaderboardEvents
         {
             KillBradley,
@@ -48,6 +50,8 @@ namespace Oxide.Plugins
         private string _latestAttackerHelicopter;
 
 
+        // HANDLES:
+        // - KillAttackHeli
         private void OnEntityTakeDamage(BaseCombatEntity victimEntity, HitInfo hitInfo)
         {
             if (victimEntity == null)
@@ -101,24 +105,70 @@ namespace Oxide.Plugins
             }
         }
 
+        // HANDLES:
+        // - HackCrate
+        // - MostCratesHacked
+        object CanHackCrate(BasePlayer player, HackableLockedCrate crate)
+        {
+            if (crate.IsLocked())
+            {
+                PostEvent(LeaderboardEvents.HackCrate, player.UserIDString);
+                PostAction(AchievementEvents.MostCratesHacked, player.UserIDString);
+            }
+
+            return null;
+        }
+
+        // HANDLES:
+        // - FirstLoginOfDay
+        void OnPlayerConnected(BasePlayer player)
+        {
+            if (player == null)
+                return;
+
+            PostEvent(LeaderboardEvents.FirstLoginOfDay, player.UserIDString);
+        }
+
         private void PostEvent(LeaderboardEvents eventType, string userId)
         {
             Dictionary<string, string> headers = new Dictionary<string, string> { { "Authorization", "asdf" } };
 
-            Puts($"Posting event {eventType} to rust.mrauro.dev");
+            Puts($"Posting event {eventType} to {URL}");
             webrequest.Enqueue(
-                $"https://rust.mrauro.dev/api/leaderboard?eventType={eventType}&userId={userId}",
+                $"{URL}/api/leaderboard?eventType={eventType}&userId={userId}",
                 null,
                 (code, response) =>
                 {
                     if (code != 200)
                     {
-                        Puts($"Failed to post event {eventType} to rust.mrauro.dev");
+                        Puts($"Failed to post event {eventType} to {URL}");
                         return;
                     }
 
-                    Puts($"Successfully posted event {eventType} to rust.mrauro.dev");
+                    Puts($"Successfully posted event {eventType} to {URL}");
                 }, this, Core.Libraries.RequestMethod.POST, headers);
         }
+
+        private void PostAction(AchievementEvents eventType, string userId)
+        {
+            Dictionary<string, string> headers = new Dictionary<string, string> { { "Authorization", "asdf" } };
+
+            Puts($"Posting event {eventType} to {URL}");
+            webrequest.Enqueue(
+                $"{URL}/api/achievement?eventType={eventType}&userId={userId}",
+                null,
+                (code, response) =>
+                {
+                    if (code != 200)
+                    {
+                        Puts($"Failed to post action event {eventType} to {URL}");
+                        return;
+                    }
+
+                    Puts($"Successfully posted action event {eventType} to {URL}");
+                }, this, Core.Libraries.RequestMethod.POST, headers);
+        }
+
+
     }
 }

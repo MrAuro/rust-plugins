@@ -19,7 +19,30 @@ namespace Oxide.Plugins
         enum LeaderboardEvents
         {
             KillBradley,
-            KillAttackHeli
+            KillAttackHeli,
+            HackCrate,
+            KillAtNight,
+            KillAtPurge,
+            FirstLoginOfDay,
+            CatchFish,
+            RaidableEasy,
+            RaidableMedium,
+            RaidableHard,
+            CallSupplySignal,
+            ResearchItem,
+        }
+
+        enum AchievementEvents
+        {
+            LongestKill,
+            MostBearsKilled,
+            MostCratesHacked,
+            MostPermittedKills,
+            MostBasesRaided,
+            MostFishCaught,
+            MostBradleysKilled,
+            MostHelisKilled,
+            MostTimedPlayed,
         }
 
         private string _latestAttackerHelicopter;

@@ -73,14 +73,10 @@ namespace Oxide.Plugins
         // the OnCrateHack event does not have the BasePlayer so we have to use this
         object CanHackCrate(BasePlayer player, HackableLockedCrate crate)
         {
-            Puts("CanHackCrate");
-
             bool firstHack = true;
 
             for (int i = 0; i < storedData.Players.Count; i++)
             {
-                Puts("checking player id: " + storedData.Players.ElementAt(i).Id);
-
                 if (storedData.Players.ElementAt(i).Id == player.UserIDString)
                 {
                     firstHack = false;

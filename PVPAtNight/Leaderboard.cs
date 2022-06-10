@@ -129,6 +129,19 @@ namespace Oxide.Plugins
             PostEvent(LeaderboardEvents.FirstLoginOfDay, player.UserIDString);
         }
 
+        // HANDLES:
+        // - ResearchItem
+        void OnItemResearch(ResearchTable table, Item targetItem, BasePlayer player)
+        {
+            if (targetItem == null)
+                return;
+
+            if (player == null)
+                return;
+
+            PostEvent(LeaderboardEvents.ResearchItem, player.UserIDString);
+        }
+
         private void PostEvent(LeaderboardEvents eventType, string userId)
         {
             Dictionary<string, string> headers = new Dictionary<string, string> { { "Authorization", "asdf" } };

@@ -19,7 +19,7 @@ namespace Oxide.Plugins
         enum LeaderboardEvents
         {
             KillBradley,
-            AttackHeli
+            KillAttackHeli
         }
 
         private string _latestAttackerHelicopter;
@@ -66,7 +66,7 @@ namespace Oxide.Plugins
             if (victimEntity is BaseHelicopter && _latestAttackerHelicopter != null)
             {
                 Puts($"Attack Heli was killed by {_latestAttackerHelicopter}");
-                PostEvent(LeaderboardEvents.AttackHeli, _latestAttackerHelicopter);
+                PostEvent(LeaderboardEvents.KillAttackHeli, _latestAttackerHelicopter);
                 _latestAttackerHelicopter = null;
             }
         }

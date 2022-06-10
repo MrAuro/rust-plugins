@@ -70,6 +70,11 @@ namespace Oxide.Plugins
         }
 
 
+        // HANDLES:
+        // - KillBradley
+        // - KillAttackHeli
+        // - MostBradleysKilled
+        // - MostHelisKilled
         private void OnEntityDeath(BaseCombatEntity victimEntity, HitInfo hitInfo)
         {
             if (victimEntity == null)
@@ -84,12 +89,14 @@ namespace Oxide.Plugins
             {
                 Puts($"BradleyAPC was killed by {attackerPlayer.userID}");
                 PostEvent(LeaderboardEvents.KillBradley, attackerPlayer.UserIDString);
+                PostAction(AchievementEvents.MostBradleysKilled, attackerPlayer.UserIDString);
             }
 
             if (victimEntity is BaseHelicopter && _latestAttackerHelicopter != null)
             {
                 Puts($"Attack Heli was killed by {_latestAttackerHelicopter}");
                 PostEvent(LeaderboardEvents.KillAttackHeli, _latestAttackerHelicopter);
+                PostAction(AchievementEvents.MostHelisKilled, _latestAttackerHelicopter);
                 _latestAttackerHelicopter = null;
             }
         }

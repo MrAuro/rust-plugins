@@ -142,6 +142,21 @@ namespace Oxide.Plugins
             PostEvent(LeaderboardEvents.ResearchItem, player.UserIDString);
         }
 
+        // HANDLES:
+        // - CatchFish
+        // - MostFishCaught
+        void OnFishCaught(ItemDefinition definition, BaseFishingRod rod, BasePlayer player)
+        {
+            if (definition == null)
+                return;
+
+            if (player == null)
+                return;
+
+            PostEvent(LeaderboardEvents.CatchFish, player.UserIDString);
+            PostAction(AchievementEvents.MostFishCaught, player.UserIDString);
+        }
+
         private void PostEvent(LeaderboardEvents eventType, string userId)
         {
             Dictionary<string, string> headers = new Dictionary<string, string> { { "Authorization", "asdf" } };

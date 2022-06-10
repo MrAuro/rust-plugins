@@ -79,6 +79,7 @@ namespace Oxide.Plugins
         // - KillAttackHeli
         // - MostBradleysKilled
         // - MostHelisKilled
+        // - MostBearsKilled
         private void OnEntityDeath(BaseCombatEntity victimEntity, HitInfo hitInfo)
         {
             if (victimEntity == null)
@@ -88,6 +89,11 @@ namespace Oxide.Plugins
                 return;
 
             BasePlayer attackerPlayer = victimEntity.lastAttacker?.ToPlayer();
+
+            if (victimEntity is Bear && attackerPlayer != null)
+            {
+                PostAction(AchievementEvents.MostBearsKilled, attackerPlayer.UserIDString);
+            }
 
             if (victimEntity is BradleyAPC && attackerPlayer != null)
             {
@@ -110,11 +116,8 @@ namespace Oxide.Plugins
         // - MostCratesHacked
         object CanHackCrate(BasePlayer player, HackableLockedCrate crate)
         {
-            if (crate.IsLocked())
-            {
-                PostEvent(LeaderboardEvents.HackCrate, player.UserIDString);
-                PostAction(AchievementEvents.MostCratesHacked, player.UserIDString);
-            }
+            PostEvent(LeaderboardEvents.HackCrate, player.UserIDString);
+            PostAction(AchievementEvents.MostCratesHacked, player.UserIDString);
 
             return null;
         }

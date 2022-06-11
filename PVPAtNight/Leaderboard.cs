@@ -17,6 +17,10 @@ namespace Oxide.Plugins
     {
         protected string URL = "https://rust.mrauro.dev";
 
+        [PluginReference]
+        Plugin RaidableBases;
+
+
         enum LeaderboardEvents
         {
             KillBradley,
@@ -79,8 +83,11 @@ namespace Oxide.Plugins
         // - MostBradleysKilled
         // - MostHelisKilled
         // - MostBearsKilled
+        // - LongestDeath
         private void OnEntityDeath(BaseCombatEntity victimEntity, HitInfo hitInfo)
         {
+            // Puts($"{victimEntity.GetType()} died");
+
             if (victimEntity == null)
                 return;
 
@@ -88,6 +95,13 @@ namespace Oxide.Plugins
                 return;
 
             BasePlayer attackerPlayer = victimEntity.lastAttacker?.ToPlayer();
+
+            if (victimEntity is BasePlayer && attackerPlayer != null)
+            {
+                float distance = attackerPlayer.Distance(victimEntity);
+                Puts($"{attackerPlayer.displayName} killed {victimEntity.GetType()} at {distance}m");
+                PostAction(AchievementEvents.LongestKill, attackerPlayer.UserIDString, distance.ToString("0.00"));
+            }
 
             if (victimEntity is Bear && attackerPlayer != null)
             {
@@ -179,13 +193,15 @@ namespace Oxide.Plugins
                 }, this, Core.Libraries.RequestMethod.POST, headers);
         }
 
-        private void PostAction(AchievementEvents eventType, string userId)
+        private void PostAction(AchievementEvents eventType, string userId, string data = null)
         {
             Dictionary<string, string> headers = new Dictionary<string, string> { { "Authorization", "asdf" } };
 
+            string dataParam = data == null ? "" : $"&data={data}";
+
             Puts($"Posting event {eventType} to {URL}");
             webrequest.Enqueue(
-                $"{URL}/api/achievement?eventType={eventType}&userId={userId}",
+                $"{URL}/api/achievement?eventType={eventType}&userId={userId}{dataParam}",
                 null,
                 (code, response) =>
                 {

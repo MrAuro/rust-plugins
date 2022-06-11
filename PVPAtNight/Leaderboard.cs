@@ -15,8 +15,7 @@ namespace Oxide.Plugins
     [Description("Connects with rust.mrauro.dev")]
     public class Leaderboard : CovalencePlugin
     {
-        // protected string URL = "https://rust.mrauro.dev";
-        protected string URL = "https://6a62-73-121-97-91.ngrok.io";
+        protected string URL = "https://rust.mrauro.dev";
 
         enum LeaderboardEvents
         {

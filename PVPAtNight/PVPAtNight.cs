@@ -87,12 +87,6 @@ namespace Oxide.Plugins
 
         }
 
-        [ChatCommand("test")]
-        void Test(BasePlayer player, string command, string[] args)
-        {
-        }
-
-
         void OnTimeSunset()
         {
             foreach (BasePlayer player in BasePlayer.activePlayerList)

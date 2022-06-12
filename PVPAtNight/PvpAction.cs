@@ -15,12 +15,44 @@ namespace Oxide.Plugins
     [Description("PvpAtNight Renewed")]
     public class PvpAction : CovalencePlugin
     {
+        protected string URL = "https://rust.mrauro.dev";
+
         [PluginReference]
-        Plugin TimeOfDay, MonumentFinder;
+        Plugin TimeOfDay, MonumentFinder, ZoneManager;
 
         public bool PvpAllowed = false;
 
         CuiElementContainer cachedPVPUI = null;
+
+        HashSet<string> insideZoneIds = new HashSet<string>();
+
+        enum LeaderboardEvents
+        {
+            KillBradley,
+            KillAttackHeli,
+            HackCrate,
+            PermittedKill,
+            FirstLoginOfDay,
+            CatchFish,
+            RaidableEasy,
+            RaidableMedium,
+            RaidableHard,
+            CallSupplySignal,
+            ResearchItem,
+        }
+
+        enum AchievementEvents
+        {
+            LongestKill,
+            MostBearsKilled,
+            MostCratesHacked,
+            MostPermittedKills,
+            MostBasesRaided,
+            MostFishCaught,
+            MostBradleysKilled,
+            MostHelisKilled,
+            MostTimedPlayed,
+        }
 
         private Dictionary<string, int> itemList = new Dictionary<string, int>
         {
@@ -36,6 +68,18 @@ namespace Oxide.Plugins
             {"smg.2", 1},
             {"smg.thompson", 1},
             {"grenade.f1", 4},
+            {"syringe.medical", 2}
+        };
+
+        private Dictionary<string, int> reducedItemList = new Dictionary<string, int>
+        {
+            {"wood", 1000},
+            {"stones", 1000},
+            {"metal.refined", 20},
+            {"metal.fragments", 500},
+            {"lowgradefuel", 100},
+            {"scrap", 100},
+            {"sulfur", 500},
         };
 
         private string[] allowedMonuments = new string[]
@@ -49,7 +93,7 @@ namespace Oxide.Plugins
             "harbor_1",
             "harbor_2",
             "junkyard_1",
-            "launch_site_1",
+            "launch_site",
             "military_tunnel_1",
             "oilrig_1",
             "oilrig_2",
@@ -61,7 +105,6 @@ namespace Oxide.Plugins
             "underwater_lab_b",
             "underwater_lab_c",
             "underwater_lab_d",
-            "warehouse",
             "water_treatment_plant_1",
         };
 
@@ -69,7 +112,8 @@ namespace Oxide.Plugins
         {
             foreach (BasePlayer player in BasePlayer.activePlayerList)
             {
-                CuiHelper.AddUi(player, cachedPVPUI);
+                if (!insideZoneIds.Contains(player.UserIDString))
+                    CuiHelper.AddUi(player, cachedPVPUI);
             }
 
             server.Command("gather.rate dispenser Stones 3");
@@ -87,7 +131,8 @@ namespace Oxide.Plugins
         {
             foreach (BasePlayer player in BasePlayer.activePlayerList)
             {
-                CuiHelper.DestroyUi(player, "PVPUI");
+                if (!insideZoneIds.Contains(player.UserIDString))
+                    CuiHelper.DestroyUi(player, "PVPUI");
             }
 
             server.Command("gather.rate dispenser Stones 2");
@@ -104,6 +149,9 @@ namespace Oxide.Plugins
 
         void Init()
         {
+            Subscribe("OnEnterZone");
+            Subscribe("OnExitZone");
+
             cachedPVPUI = CreatePVPUI();
 
             if (TimeOfDay == null)
@@ -116,6 +164,48 @@ namespace Oxide.Plugins
             {
                 Puts("MonumentFinder is not loaded");
                 return;
+            }
+        }
+
+        void Unload()
+        {
+            Puts("Destroying UI elements");
+            foreach (BasePlayer player in BasePlayer.activePlayerList)
+            {
+                CuiHelper.DestroyUi(player, "PVPUI");
+            }
+        }
+
+        void OnEnterZone(string ZoneID, BasePlayer player) // Called when a player enters a zone
+        {
+            if (!allowedMonuments.Contains(ZoneID))
+            {
+                return;
+            }
+
+            player.ChatMessage("You have <color=#00FF00>entered</color> a PVP zone");
+
+            insideZoneIds.Add(player.UserIDString);
+
+            if (!PvpAllowed)
+            {
+                CuiHelper.AddUi(player, cachedPVPUI);
+            }
+        }
+        void OnExitZone(string ZoneID, BasePlayer player) // Called when a player exits a zone
+        {
+            if (!allowedMonuments.Contains(ZoneID))
+            {
+                return;
+            }
+
+            player.ChatMessage("You have <color=#FF0000>exited</color> a PVP zone");
+
+            insideZoneIds.Remove(player.UserIDString);
+
+            if (!PvpAllowed)
+            {
+                CuiHelper.DestroyUi(player, "PVPUI");
             }
         }
 
@@ -159,46 +249,163 @@ namespace Oxide.Plugins
 
         private void OnEntityDeath(BaseCombatEntity victimEntity, HitInfo hitInfo)
         {
-            MonumentAdapter prefab = GetClosestMonument(victimEntity.transform.position);
-            if (prefab != null)
+            if (victimEntity.lastAttacker == null) return;
+
+            BasePlayer attackerPlayer = victimEntity.lastAttacker.ToPlayer();
+            if (attackerPlayer == null) return;
+
+            if (!(victimEntity is BasePlayer)) return;
+            if (victimEntity is NPCPlayer) return;
+
+            BasePlayer victimPlayer = victimEntity.ToPlayer();
+
+            if (IsTeamKill(attackerPlayer, victimPlayer)) return;
+
+            if (PvpAllowed)
             {
-                if (prefab.IsInBounds(victimEntity.transform.position))
-                {
-                    Puts($"{victimEntity.GetType()} was killed in {prefab.ShortName}");
-                }
+                float distance = attackerPlayer.Distance(victimPlayer);
+
+                PostAction(AchievementEvents.LongestKill, attackerPlayer.UserIDString, distance.ToString("0.00"));
+                PostAction(AchievementEvents.MostPermittedKills, attackerPlayer.UserIDString);
+                PostEvent(LeaderboardEvents.PermittedKill, attackerPlayer.UserIDString);
+
+                var item = itemList.ElementAt(UnityEngine.Random.Range(0, itemList.Count));
+                attackerPlayer.inventory.GiveItem(ItemManager.CreateByItemID(ItemManager.FindItemDefinition(item.Key).itemid, item.Value));
+                server.Broadcast($"{attackerPlayer.displayName} has received {item.Value}x {ItemManager.FindItemDefinition(item.Key).displayName.english} for killing {victimPlayer.displayName}");
+                return;
             }
 
-            if (victimEntity is BasePlayer && !(victimEntity is NPCPlayer))
+            string[] zoneIds = ZoneManager.Call<string[]>("GetZoneIDs");
+            Puts($"Found {zoneIds.Length} zones");
+            string zoneId = zoneIds.FirstOrDefault(x => ZoneManager.Call<bool>("IsPlayerInZone", x, attackerPlayer.ToPlayer()));
+            if (zoneId == null)
             {
-                if (victimEntity.lastDamage == Rust.DamageType.Bleeding) ;
+                Puts($"{attackerPlayer.displayName} killed {victimPlayer.displayName} outside of a PVP zone/time");
+                return;
+            }
 
-                if (PvpAllowed)
-                {
-                    BasePlayer attackerPlayer = victimEntity.lastAttacker.ToPlayer();
-                    BasePlayer victimPlayer = victimEntity.ToPlayer();
+            if (allowedMonuments.Contains(zoneId))
+            {
+                float distance = attackerPlayer.Distance(victimPlayer);
 
-                    if (attackerPlayer == null) return;
+                PostAction(AchievementEvents.LongestKill, attackerPlayer.UserIDString, distance.ToString("0.00"));
+                PostAction(AchievementEvents.MostPermittedKills, attackerPlayer.UserIDString);
+                PostEvent(LeaderboardEvents.PermittedKill, attackerPlayer.UserIDString);
 
-
-                    if (IsTeamKill(attackerPlayer, victimPlayer)) return;
-
-
-                    var item = itemList.ElementAt(UnityEngine.Random.Range(0, itemList.Count));
-                    attackerPlayer.inventory.GiveItem(ItemManager.CreateByItemID(ItemManager.FindItemDefinition(item.Key).itemid, item.Value));
-                    server.Broadcast($"{attackerPlayer.displayName} has received {item.Value}x {ItemManager.FindItemDefinition(item.Key).displayName.english} for killing {victimPlayer.displayName}");
-                }
-                else
-                {
-                    if (prefab != null)
-                    {
-                        if (prefab.IsInBounds(victimEntity.transform.position))
-                        {
-                            Puts($"{victimEntity.GetType()} was killed in {prefab.ShortName}");
-                        }
-                    }
-                }
+                var item = reducedItemList.ElementAt(UnityEngine.Random.Range(0, reducedItemList.Count));
+                attackerPlayer.inventory.GiveItem(ItemManager.CreateByItemID(ItemManager.FindItemDefinition(item.Key).itemid, item.Value));
+                server.Broadcast($"{attackerPlayer.displayName} has received {item.Value}x {ItemManager.FindItemDefinition(item.Key).displayName.english} for killing {victimPlayer.displayName}");
+                return;
             }
         }
+
+        private void PostEvent(LeaderboardEvents eventType, string userId)
+        {
+            Dictionary<string, string> headers = new Dictionary<string, string> { { "Authorization", "asdf" } };
+
+            Puts($"Posting event {eventType} to {URL}");
+            webrequest.Enqueue(
+                $"{URL}/api/leaderboard?eventType={eventType}&userId={userId}",
+                null,
+                (code, response) =>
+                {
+                    if (code != 200)
+                    {
+                        Puts($"Failed to post event {eventType} to {URL}");
+                        return;
+                    }
+
+                    Puts($"Successfully posted event {eventType} to {URL}");
+                }, this, Core.Libraries.RequestMethod.POST, headers);
+        }
+
+        private void PostAction(AchievementEvents eventType, string userId, string data = null)
+        {
+            Dictionary<string, string> headers = new Dictionary<string, string> { { "Authorization", "asdf" } };
+
+            string dataParam = data == null ? "" : $"&data={data}";
+
+            Puts($"Posting event {eventType} to {URL}");
+            webrequest.Enqueue(
+                $"{URL}/api/achievement?eventType={eventType}&userId={userId}{dataParam}",
+                null,
+                (code, response) =>
+                {
+                    if (code != 200)
+                    {
+                        Puts($"Failed to post action event {eventType} to {URL}");
+                        return;
+                    }
+
+                    Puts($"Successfully posted action event {eventType} to {URL}");
+                }, this, Core.Libraries.RequestMethod.POST, headers);
+        }
+
+        // private void OnEntityDeath(BaseCombatEntity victimEntity, HitInfo hitInfo)
+        // {
+        //     // MonumentAdapter prefab = GetClosestMonument(victimEntity.transform.position);
+        //     // if (prefab != null)
+        //     // {
+        //     //     if (prefab.IsInBounds(victimEntity.transform.position))
+        //     //     {
+        //     //         Puts($"{victimEntity.GetType()} was killed in {prefab.ShortName}");
+        //     //     }
+        //     // }
+
+        //     string[] zoneIds = ZoneManager.Call<string[]>("GetZoneIDs");
+        //     bool isInZone = false;
+        //     foreach (string zoneId in zoneIds)
+        //     {
+        //         if (ZoneManager.Call<bool>("IsEntityInZone", zoneId, victimEntity.lastAttacker as BaseEntity))
+        //         {
+        //             if (allowedMonuments.Contains(zoneId))
+        //             {
+        //                 isInZone = true;
+        //                 Puts($"{victimEntity.lastAttacker.GetType()} was killed in {zoneId} permittedly");
+        //             }
+        //             else
+        //             {
+        //                 Puts("aaa");
+        //             }
+        //         }
+        //     }
+
+        //     Puts($"inzone? {isInZone}");
+
+        //     // Puts($"{CanEntityPvp(victimEntity.lastAttacker)}");
+
+        //     if (victimEntity is BasePlayer/* && !(victimEntity is NPCPlayer)*/)
+        //     {
+        //         if (false)
+        //         {
+        //             Puts("can pvp yeah");
+        //             BasePlayer attackerPlayer = victimEntity.lastAttacker.ToPlayer();
+        //             BasePlayer victimPlayer = victimEntity.ToPlayer();
+
+        //             if (attackerPlayer == null) return;
+
+
+        //             if (IsTeamKill(attackerPlayer, victimPlayer)) return;
+
+
+        //             var item = itemList.ElementAt(UnityEngine.Random.Range(0, itemList.Count));
+        //             attackerPlayer.inventory.GiveItem(ItemManager.CreateByItemID(ItemManager.FindItemDefinition(item.Key).itemid, item.Value));
+        //             server.Broadcast($"{attackerPlayer.displayName} has received {item.Value}x {ItemManager.FindItemDefinition(item.Key).displayName.english} for killing {victimPlayer.displayName}");
+        //         }
+        //         else
+        //         {
+        //             Puts("no i dont think so");
+        //             // if (prefab != null)
+        //             // {
+        //             //     if (prefab.IsInBounds(victimEntity.transform.position))
+        //             //     {
+        //             //         Puts($"{victimEntity.GetType()} was killed in {prefab.ShortName}");
+        //             //     }
+        //             // }
+        //         }
+        //     }
+        // }
+
 
         bool IsTeamKill(BasePlayer attacker, BasePlayer victim)
         {

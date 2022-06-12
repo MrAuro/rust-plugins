@@ -17,17 +17,13 @@ namespace Oxide.Plugins
     {
         protected string URL = "https://rust.mrauro.dev";
 
-        [PluginReference]
-        Plugin RaidableBases;
 
-
-        enum LeaderboardEvents
+        public enum LeaderboardEvents
         {
             KillBradley,
             KillAttackHeli,
             HackCrate,
-            KillAtNight,
-            KillAtPurge,
+            PermittedKill,
             FirstLoginOfDay,
             CatchFish,
             RaidableEasy,
@@ -37,7 +33,7 @@ namespace Oxide.Plugins
             ResearchItem,
         }
 
-        enum AchievementEvents
+        public enum AchievementEvents
         {
             LongestKill,
             MostBearsKilled,
@@ -52,6 +48,12 @@ namespace Oxide.Plugins
 
         private string _latestAttackerHelicopter;
 
+
+        private void Init()
+        {
+            Subscribe("API_EnablePVP");
+            Subscribe("API_DisablePVP");
+        }
 
         // HANDLES:
         // - KillAttackHeli
@@ -83,7 +85,6 @@ namespace Oxide.Plugins
         // - MostBradleysKilled
         // - MostHelisKilled
         // - MostBearsKilled
-        // - LongestDeath
         private void OnEntityDeath(BaseCombatEntity victimEntity, HitInfo hitInfo)
         {
             // Puts($"{victimEntity.GetType()} died");
@@ -96,12 +97,21 @@ namespace Oxide.Plugins
 
             BasePlayer attackerPlayer = victimEntity.lastAttacker?.ToPlayer();
 
-            if (victimEntity is BasePlayer && attackerPlayer != null)
-            {
-                float distance = attackerPlayer.Distance(victimEntity);
-                Puts($"{attackerPlayer.displayName} killed {victimEntity.GetType()} at {distance}m");
-                PostAction(AchievementEvents.LongestKill, attackerPlayer.UserIDString, distance.ToString("0.00"));
-            }
+            // if (victimEntity is BasePlayer && attackerPlayer != null && !(victimEntity is NPCPlayer))
+            // {
+            //     if (PvpAllowed)
+            //     {
+            //         if (IsTeamKill(attackerPlayer, victimEntity.ToPlayer()))
+            //             return;
+
+            //         PostAction(AchievementEvents.MostPermittedKills, attackerPlayer.UserIDString);
+            //         PostEvent(LeaderboardEvents.PermittedKill, attackerPlayer.UserIDString);
+
+            //         float distance = attackerPlayer.Distance(victimEntity);
+            //         Puts($"{attackerPlayer.displayName} killed {victimEntity.GetType()} at {distance}m");
+            //         PostAction(AchievementEvents.LongestKill, attackerPlayer.UserIDString, distance.ToString("0.00"));
+            //     }
+            // }
 
             if (victimEntity is Bear && attackerPlayer != null)
             {

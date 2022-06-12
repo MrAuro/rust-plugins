@@ -17,6 +17,8 @@ namespace Oxide.Plugins
     {
         protected string URL = "https://rust.mrauro.dev";
 
+        [PluginReference]
+        Plugin PlaytimeTracker;
 
         public enum LeaderboardEvents
         {
@@ -43,7 +45,7 @@ namespace Oxide.Plugins
             MostFishCaught,
             MostBradleysKilled,
             MostHelisKilled,
-            MostTimedPlayed,
+            MostPlayTime,
         }
 
         private string _latestAttackerHelicopter;
@@ -76,6 +78,14 @@ namespace Oxide.Plugins
 
                 _latestAttackerHelicopter = attackerPlayer.UserIDString;
             }
+        }
+
+        private void OnUserDisconnected(IPlayer player)
+        {
+            // update the playertime in the achievement
+            float playtime = PlaytimeTracker.Call<float>("GetPlayTime", player.Id);
+
+            PostAction(AchievementEvents.MostPlayTime, player.Id, playtime.ToString("0.00"));
         }
 
 

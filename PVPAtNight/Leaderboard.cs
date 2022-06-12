@@ -206,6 +206,8 @@ namespace Oxide.Plugins
                     if (code != 200)
                     {
                         Puts($"Failed to post event {eventType} to {URL}");
+                        BasePlayer player = BasePlayer.FindByID(Convert.ToUInt64(userId));
+                        player.SendMessage($"{eventType} failed to send to the server ({code}). Please send a screenshot of this to Auro");
                         return;
                     }
 
@@ -228,6 +230,8 @@ namespace Oxide.Plugins
                     if (code != 200)
                     {
                         Puts($"Failed to post action event {eventType} to {URL}");
+                        BasePlayer player = BasePlayer.FindByID(Convert.ToUInt64(userId));
+                        player.SendMessage($"{eventType} failed to send to the server ({code}). Please send a screenshot of this to Auro");
                         return;
                     }
 

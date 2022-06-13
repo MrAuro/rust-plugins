@@ -125,7 +125,7 @@ namespace Oxide.Plugins
             //     }
             // }
 
-            if (attackerPlayer is NPCPlayer) return;
+            if (attackerPlayer is NPCPlayer || victimEntity is NPCPlayer) return;
 
             if ((victimEntity is Bear || victimEntity is Polarbear) && attackerPlayer != null)
             {

@@ -46,6 +46,7 @@ namespace Oxide.Plugins
             MostBradleysKilled,
             MostHelisKilled,
             MostPlayTime,
+            MostDeaths,
         }
 
         private string _latestAttackerHelicopter;
@@ -128,6 +129,11 @@ namespace Oxide.Plugins
             if ((victimEntity is Bear || victimEntity is Polarbear) && attackerPlayer != null)
             {
                 PostAction(AchievementEvents.MostBearsKilled, attackerPlayer.UserIDString);
+            }
+
+            if (victimEntity is BasePlayer)
+            {
+                PostAction(AchievementEvents.MostDeaths, victimEntity.ToPlayer().UserIDString);
             }
 
             if (victimEntity is BradleyAPC && attackerPlayer != null)

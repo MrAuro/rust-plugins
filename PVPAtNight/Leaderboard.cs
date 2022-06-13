@@ -123,7 +123,7 @@ namespace Oxide.Plugins
             //     }
             // }
 
-            if (victimEntity is Bear && attackerPlayer != null)
+            if ((victimEntity is Bear || victimEntity is Polarbear) && attackerPlayer != null)
             {
                 PostAction(AchievementEvents.MostBearsKilled, attackerPlayer.UserIDString);
             }

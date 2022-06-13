@@ -8,6 +8,7 @@ using System;
 using Oxide.Core.Plugins;
 using Oxide.Game.Rust.Cui;
 using System.Linq;
+using Rust;
 
 namespace Oxide.Plugins
 {
@@ -130,6 +131,9 @@ namespace Oxide.Plugins
             {
                 PostAction(AchievementEvents.MostBearsKilled, attackerPlayer.UserIDString);
             }
+
+            if (victimEntity.lastDamage == DamageType.Suicide)
+                return;
 
             if (victimEntity is BasePlayer)
             {
